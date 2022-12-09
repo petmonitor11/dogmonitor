@@ -37,7 +37,7 @@ dependencies:
     sdk: flutter
   js: ^0.6.4
   location: ^4.2.0
-  scoped_model: ^1.0.1
+  scoped_model: ^2.0.0-nullsafety.0
 
 dev_dependencies:
 
