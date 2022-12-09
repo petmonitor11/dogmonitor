@@ -31152,7 +31152,7 @@ s.b8()},
 $S:116}
 A.yw.prototype={
 J(a){var s=null
-return new A.pJ(new A.pF(this.c,this.d,s),"Flutter Demo",A.a97(s,B.ey,s),s)}}
+return new A.pJ(new A.pF(this.c,this.d,s),"Pet Monitor",A.a97(s,B.ey,s),s)}}
 A.pF.prototype={
 ap(){return new A.DZ(this.c,this.d,new A.iy(A.iu(t.O)),B.l)}}
 A.DZ.prototype={
