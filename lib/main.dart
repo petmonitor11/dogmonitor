@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+import 'dart:html';
+import 'dart:ui' as ui;
+import 'package:google_maps/google_maps.dart' as googlemaps;
+
 
 void main() {
+  setUrlStrategy(PathUrlStrategy());
   runApp(const MyApp());
 }
 
@@ -78,7 +84,8 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: Column(
+        child:
+        Column(
           // Column is also a layout widget. It takes a list of children and
           // arranges them vertically. By default, it sizes itself to fit its
           // children horizontally, and tries to be as tall as its parent.
@@ -104,6 +111,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ),
+        // TODO uncomment getMap() when API Key is available
+        // getMap()
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
@@ -111,5 +120,36 @@ class _MyHomePageState extends State<MyHomePage> {
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  Widget getMap() {
+    String htmlId = "7";
+
+    // ignore: undefined_prefixed_name
+    ui.platformViewRegistry.registerViewFactory(htmlId, (int viewId) {
+      final myLatlng = googlemaps.LatLng(1.3521, 103.8198);
+
+      final mapOptions = googlemaps.MapOptions()
+        ..zoom = 10
+        ..center = googlemaps.LatLng(1.3521, 103.8198);
+
+      final elem = DivElement()
+        ..id = htmlId
+        ..style.width = "100%"
+        ..style.height = "100%"
+        ..style.border = 'none';
+
+      final map = googlemaps.GMap(elem, mapOptions);
+
+      googlemaps.Marker(googlemaps.MarkerOptions()
+        ..position = myLatlng
+        ..map = map
+        ..title = 'Hello World!'
+      );
+
+      return elem;
+    });
+
+    return HtmlElementView(viewType: htmlId);
   }
 }
