@@ -35,6 +35,9 @@ dependencies:
   google_maps: ^6.2.0
   flutter_web_plugins:
     sdk: flutter
+  js: ^0.6.4
+  location: ^4.2.0
+  scoped_model: ^2.0.0-nullsafety.0
 
 dev_dependencies:
 
