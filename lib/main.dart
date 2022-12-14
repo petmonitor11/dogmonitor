@@ -101,7 +101,7 @@ Widget getMap(LocationData? locationData, String? latitude, String? longitude) {
       final myLatlng = googlemaps.LatLng(double.parse(latitude), double.parse(longitude));
 
       final mapOptions = googlemaps.MapOptions()
-        ..zoom = 16
+        ..zoom = 18
         ..center = googlemaps.LatLng(double.parse(latitude), double.parse(longitude));
 
       final elem = DivElement()
